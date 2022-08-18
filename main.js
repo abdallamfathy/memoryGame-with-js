@@ -1,4 +1,7 @@
+// Get control buttons
 let controlButtons = document.querySelector(".control-buttons span");
+
+// Add function to prompt name
 controlButtons.onclick = () =>{
     let yourName = prompt("Enter your name please!");
     if (yourName === null || yourName === "") {
@@ -8,18 +11,27 @@ controlButtons.onclick = () =>{
         let nameUpdate = document.querySelector(".name span");
         nameUpdate.innerHTML = yourName;
     }
-    let removeControlButtons = document.querySelector(".control-buttons").remove();
+    let removeControlButtons = document.querySelector(".control-buttons");
+    removeControlButtons.remove();
     // Run success audio
     let audioWelcome = document.getElementById("welcome");
     audioWelcome.play();
     
 }
 
+// Make duration 1 sec
 let duration = 1000;
 
+// Get block container
 let blocksContainer = document.querySelector(".memory-game-blocks");
+
+// Get array of blocks from blocks container
 let blocks = Array.from(blocksContainer.children);
+
+// Set the range depending on array size
 let orderRange = [...Array(blocks.length).keys()];
+
+// Trigger the function that shuffels the array
 shuffle(orderRange);
 
 
@@ -39,12 +51,15 @@ blocks.forEach((block,index)=>{
 
 // Create function to shuffle the array
 function shuffle (array){
-    
+
+        // initialize variables
         let current = orderRange.length,
         temp,
         random;
+        // Loop for swapping the array elements
     while (current > 0) {
-    
+        
+        // Multiply the math random with current to get number inside array
         random  = Math.floor(Math.random() * current);
         current--;
         temp = array[current];
@@ -112,12 +127,15 @@ function checkMatchedBlocks(firstSelectedBlock,secondSelectedBlock) {
 
     } else {
 
+        // Count the wrong tries
         triesElement.innerHTML = parseInt(triesElement.innerHTML) + 1;
+        
         // remove flipp class after duration
         setTimeout(() => {
             firstSelectedBlock.classList.remove("is-flipped");
             secondSelectedBlock.classList.remove("is-flipped");
         }, duration);
+
         // Run success audio
         let audioFail = document.getElementById("fail");
         audioFail.play();
