@@ -9,6 +9,10 @@ controlButtons.onclick = () =>{
         nameUpdate.innerHTML = yourName;
     }
     let removeControlButtons = document.querySelector(".control-buttons").remove();
+    // Run success audio
+    let audioWelcome = document.getElementById("welcome");
+    audioWelcome.play();
+    
 }
 
 let duration = 1000;
@@ -102,6 +106,9 @@ function checkMatchedBlocks(firstSelectedBlock,secondSelectedBlock) {
         // Add the matching class
         firstSelectedBlock.classList.add("has-match");
         secondSelectedBlock.classList.add("has-match");
+        // Run success audio
+        let audioSuccess = document.getElementById("success");
+        audioSuccess.play();
 
     } else {
 
@@ -111,5 +118,8 @@ function checkMatchedBlocks(firstSelectedBlock,secondSelectedBlock) {
             firstSelectedBlock.classList.remove("is-flipped");
             secondSelectedBlock.classList.remove("is-flipped");
         }, duration);
+        // Run success audio
+        let audioFail = document.getElementById("fail");
+        audioFail.play();
     }
 }
