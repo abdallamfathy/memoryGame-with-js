@@ -13,11 +13,24 @@ controlButtons.onclick = () =>{
 
 let duration = 1000;
 
- let blocksContainer = document.querySelector(".memory-game-blocks");
- let blocks = Array.from(blocksContainer.children);
-
- let orderRange = [...Array(blocks.length).keys()];
-
- console.log(orderRange);
+let blocksContainer = document.querySelector(".memory-game-blocks");
+let blocks = Array.from(blocksContainer.children);
+let orderRange = [...Array(blocks.length).keys()];
 
 
+const shuffle = (array) =>{
+    let current = orderRange.length,
+    temp,
+    random;
+while (current > 0) {
+
+    random  = Math.floor(Math.random() * current);
+    current--;
+    temp = array[current];
+    array[current] = array[random];
+    array[random] = temp;
+
+}
+return array;
+}
+console.log(shuffle(orderRange));
